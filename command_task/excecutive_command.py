@@ -13,14 +13,17 @@ def control_computer(action):
 
 
 def manage_applications(action, app_name):
-    # if action.lower() == 'open':
-    #     os.system(f"start {app_name}")  # Command to open application
-    #     return f"Opening application: {app_name}"
-    # elif action.lower() == 'close':
-    #     os.system(f"taskkill /IM {app_name}.exe /F")  # Command to close application
-    return f"Closing application: {app_name}"
-    # else:
-    #     return "Sorry, I can't perform that action for applications."
+    if action.lower() == 'open':
+        # Mở ứng dụng cụ thể
+        os.system(f"start {app_name}")  # Command to open application
+        return f"Opening application: {app_name}"
+    elif action.lower() == 'close':
+        # Đóng ứng dụng cụ thể
+        # Command to close application
+        os.system(f"taskkill /IM {app_name}.exe /F")
+        return f"Closing application: {app_name}"
+    else:
+        return "Sorry, I can't perform that action for applications."
 
 
 def search_information(query):

@@ -1,5 +1,5 @@
-from excucute_command import *
-from extract_parameter import *
+from command_task.excecutive_command import *
+from command_task.extract_parameter import *
 import pickle
 
 # Tải mô hình đã lưu từ tệp
@@ -48,8 +48,5 @@ def assistant(user_input):
 
 
 # Example usage
-# print(assistant("Turn off computer"))
-# print(assistant("Restart computer"))
-# print(assistant("Open Chrome"))
-# print(assistant("Close Notepad"))
-print(assistant("Do you want to build a snowman"))
+val = input("Enter your command: ")
+print(assistant(val))

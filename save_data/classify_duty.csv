@@ -130,3 +130,14 @@ Text,Intent
 """If you could instantly become an expert in any field, what would it be""",search_information
 """What is one of the most memorable experiences you've ever had""",search_information
 """Do you have a favorite quote or saying? What is it""",search_information
+"""Open Google Chorme and search Obama""", open_app_and_do
+"""Open Firefox and search for Elon Musk.""", open_app_and_do
+"""Launch Spotify and play 'Bohemian Rhapsody'.""", open_app_and_do
+"""Open Microsoft Word and create a new document.""", open_app_and_do
+"""Start Excel and open the latest sales report.""", open_app_and_do
+"""Open Adobe Photoshop and edit the image named 'landscape.jpg'.""", open_app_and_do
+"""Launch Zoom and join the meeting with ID 123456789.""", open_app_and_do
+"""Open File Explorer and navigate to the Downloads folder.""", open_app_and_do
+"""Start VLC Media Player and play the movie 'Inception'.""", open_app_and_do
+"""Open Discord and join the server named 'Gaming Community'.""", open_app_and_do
+"""Launch PowerPoint and open the presentation titled 'Marketing Strategy'.""", open_app_and_do

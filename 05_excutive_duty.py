@@ -48,5 +48,5 @@ def assistant(user_input):
 
 
 # Example usage
-val = input("Enter your command: ")
-print(assistant(val))
+# val = input("Enter your command: ")
+print(assistant('Open Google Chrome and search who am i'))

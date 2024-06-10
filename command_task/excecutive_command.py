@@ -1,5 +1,6 @@
 import os
 import webbrowser
+from app.app import *
 
 chrome_path = "C://Program Files//Google//Chrome//Application//chrome.exe"
 webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(chrome_path))
@@ -20,9 +21,15 @@ def manage_applications(action, app_name, search_query=None):
     if action.lower() == 'open':
         # Mở Google Chrome và tìm kiếm trên Google nếu có search_query
         if search_query:
-            url = f"https://www.google.com/search?q={search_query}"
-            webbrowser.get("chrome").open(url)
-            return f"Opening Google Chrome and searching for: {search_query}"
+            for app_chr in app_chrome:
+                if 'https://' in search_query.lower():
+                    # Mở liên kết trực tiếp
+                    webbrowser.get("chrome").open(search_query)
+                    return f"Opening link: {search_query}"
+                else:
+                    url = f"https://www.google.com/search?q={search_query}"
+                    webbrowser.get("chrome").open(url)
+                    return f"Opening Google Chrome and searching for: {search_query}"
         else:
             # Mở ứng dụng cụ thể
             os.system(f"start {app_name}")  # Command to open application

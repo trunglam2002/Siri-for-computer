@@ -2,9 +2,10 @@ import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
-from sklearn.svm import SVC
+from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import accuracy_score
 import pickle
+from sklearn.metrics import confusion_matrix
 
 
 def load_data(url):
@@ -23,7 +24,7 @@ def preprocess_data(df):
 
 def train_model(X_train, y_train):
     # Huấn luyện mô hình
-    model = SVC()
+    model = MultinomialNB()
     model.fit(X_train, y_train)
     return model
 
@@ -50,6 +51,8 @@ def update_model(url, model_filename, vectorizer_filename):
         X, y, test_size=0.2, random_state=42)
     model = train_model(X_train, y_train)
     accuracy = evaluate_model(model, X_test, y_test)
+    y_pred = model.predict(X_test)
+    print(confusion_matrix(y_test, y_pred))
     save_model(model, model_filename)
     save_model(vectorizer, vectorizer_filename)
     print(f'Accuracy after update: {accuracy}')

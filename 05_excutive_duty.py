@@ -24,7 +24,7 @@ task_mapping = {
 
 
 def recognize_intent(user_input):
-    candidate_labels = list(intents.keys())
+    # candidate_labels = list(intents.keys())
     user_input_transform = vectorizer.transform([user_input])
     result = model.predict(user_input_transform)
     return result  # Most likely intent
@@ -34,8 +34,8 @@ def execute_task(intent, parameters):
     if intent == 'control_computer':
         return control_computer(parameters)
     elif intent == 'manage_applications':
-        action, app_name = parameters
-        return manage_applications(action, app_name)
+        action, app_name, query = parameters
+        return manage_applications(action, app_name, query)
     elif intent == 'search_information':
         return search_information(parameters)
 

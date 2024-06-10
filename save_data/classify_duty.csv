@@ -1,143 +1,140 @@
 Text,Intent
-"""Turn off the computer.""",control_computer
-"""Restart the computer.""",control_computer
-"""Open Google Chrome.""",manage_applications
-"""Close Notepad.""",manage_applications
-"""Search for weather forecast.""",search_information
-"""Find information about global warming.""",search_information
-"""Lookup the definition of machine learning.""",search_information
-"""Shut down the PC.""",control_computer
-"""Launch Spotify.""",manage_applications
-"""Close Microsoft Word.""",manage_applications
-"""Find articles about space exploration.""",search_information
-"""Restart the laptop.""",control_computer
-"""Open File Explorer.""",manage_applications
-"""Search for recipes.""",search_information
-"""Turn off the desktop.""",control_computer
-"""Close Excel.""",manage_applications
-"""Look up historical events.""",search_information
-"""Reboot the machine.""",control_computer
-"""Start PowerPoint.""",manage_applications
-"""Find information about renewable energy.""",search_information
-"""Power off the workstation.""",control_computer
-"""Open Photoshop.""",manage_applications
-"""Turn on the desktop.""",control_computer
-"""Restart the server.""",control_computer
-"""Open Firefox.""",manage_applications
-"""Close Chrome.""",manage_applications
-"""Search for programming tutorials.""",search_information
-"""Find information about the solar system.""",search_information
-"""Shut down the laptop.""",control_computer
-"""Launch Visual Studio.""",manage_applications
-"""Close Spotify.""",manage_applications
-"""Search for cooking recipes.""",search_information
-"""Turn off the monitor.""",control_computer
-"""Open Microsoft Edge.""",manage_applications
-"""Search for travel destinations.""",search_information
-"""Reboot the PC.""",control_computer
-"""Launch Sublime Text.""",manage_applications
-"""Find information about artificial intelligence.""",search_information
-"""Power off the laptop.""",control_computer
-"""Open Slack.""",manage_applications
-"""Lookup the definition of globalization.""",search_information
-"""Restart the desktop.""",control_computer
-"""Open Spotify.""",manage_applications
-"""Close Visual Studio Code.""",manage_applications
-"""Search for movie reviews.""",search_information
-"""Shut down the server.""",control_computer
-"""Launch Discord.""",manage_applications
-"""Find information about dinosaurs.""",search_information
-"""Turn on the laptop.""",control_computer
-"""Restart the workstation.""",control_computer
-"""Open Zoom.""",manage_applications
-"""Close PowerPoint.""",manage_applications
-"""Search for latest technology news.""",search_information
-"""Turn off the printer.""",control_computer
-"""Open Eclipse.""",manage_applications
-"""Search for job opportunities.""",search_information
-"""Shut down the desktop.""",control_computer
-"""Launch Minecraft.""",manage_applications
-"""Close Outlook.""",manage_applications
-"""Find information about space telescopes.""",search_information
-"""Reboot the laptop.""",control_computer
-"""Open Notepad++.""",manage_applications
-"""Look up the definition of cryptocurrency.""",search_information
-"""Power off the server.""",control_computer
-"""Launch Chrome.""",manage_applications
-"""Close Terminal.""",manage_applications
-"""Search for healthy recipes.""",search_information
-"""Turn on the desktop.""",control_computer
-"""Restart the server.""",control_computer
-"""Open Firefox.""",manage_applications
-"""Close Chrome.""",manage_applications
-"""Search for programming tutorials.""",search_information
-"""Find information about the solar system.""",search_information
-"""Shut down the laptop.""",control_computer
-"""Launch Visual Studio.""",manage_applications
-"""Close Spotify.""",manage_applications
-"""Search for cooking recipes.""",search_information
-"""Turn off the monitor.""",control_computer
-"""Open Microsoft Edge.""",manage_applications
-"""Search for travel destinations.""",search_information
-"""Reboot the PC.""",control_computer
-"""Launch Sublime Text.""",manage_applications
-"""Find information about artificial intelligence.""",search_information
-"""Power off the laptop.""",control_computer
-"""Open Slack.""",manage_applications
-"""Lookup the definition of globalization.""",search_information
-"""Restart the desktop.""",control_computer
-"""Turn off the computer.""",control_computer
-"""Restart the computer.""",control_computer
-"""Open Google Chrome.""",manage_applications
-"""Close Notepad.""",manage_applications
-"""Search for weather forecast.""",search_information
-"""Find information about global warming.""",search_information
-"""Lookup the definition of machine learning.""",search_information
-"""Shut down the PC.""",control_computer
-"""Launch Spotify.""",manage_applications
-"""Close Microsoft Word.""",manage_applications
-"""Find articles about space exploration.""",search_information
-"""Restart the laptop.""",control_computer
-"""Open File Explorer.""",manage_applications
-"""Search for recipes.""",search_information
-"""Turn off the desktop.""",control_computer
-"""Close Excel.""",manage_applications
-"""Look up historical events.""",search_information
-"""Reboot the machine.""",control_computer
-"""Start PowerPoint.""",manage_applications
-"""Find information about renewable energy.""",search_information
-"""Power off the workstation.""",control_computer
-"""Open Photoshop.""",manage_applications
-"""Search for movie reviews.""",search_information
-"""Shutdown the server.""",control_computer
-"""Close Visual Studio Code.""",manage_applications
-"""Read about famous painters.""",search_information
-"""Turn off the MacBook.""",control_computer
-"""Launch Zoom.""",manage_applications
-"""Find information about climate change.""",search_information
-"""Reboot the router.""",control_computer
-"""Open iTunes.""",manage_applications
-"""Search for health tips.""",search_information
-"""On computer.""",control_computer
-"""Off computer.""",control_computer
-"""What is your favorite book and why""",search_information
-"""If you could travel anywhere in the world right now, where would you go""",search_information
-"""What is your favorite way to spend a weekend""",search_information
-"""If you could have dinner with any historical figure, who would it be""",search_information
-"""What hobby would you like to take up if you had more free time""",search_information
-"""Do you prefer the mountains or the beach? Why""",search_information
-"""What is your favorite movie or TV show""",search_information
-"""If you could instantly become an expert in any field, what would it be""",search_information
-"""What is one of the most memorable experiences you've ever had""",search_information
-"""Do you have a favorite quote or saying? What is it""",search_information
-"""Open Google Chorme and search Obama""", open_app_and_do
-"""Open Firefox and search for Elon Musk.""", open_app_and_do
-"""Launch Spotify and play 'Bohemian Rhapsody'.""", open_app_and_do
-"""Open Microsoft Word and create a new document.""", open_app_and_do
-"""Start Excel and open the latest sales report.""", open_app_and_do
-"""Open Adobe Photoshop and edit the image named 'landscape.jpg'.""", open_app_and_do
-"""Launch Zoom and join the meeting with ID 123456789.""", open_app_and_do
-"""Open File Explorer and navigate to the Downloads folder.""", open_app_and_do
-"""Start VLC Media Player and play the movie 'Inception'.""", open_app_and_do
-"""Open Discord and join the server named 'Gaming Community'.""", open_app_and_do
-"""Launch PowerPoint and open the presentation titled 'Marketing Strategy'.""", open_app_and_do
+Turn off the computer,control_computer
+Restart the computer,control_computer
+Open Google Chrome,manage_applications
+Close Notepad,manage_applications
+Search for weather forecast,search_information
+Find information about global warming,search_information
+Lookup the definition of machine learning,search_information
+Shut down the PC,control_computer
+Launch Spotify,manage_applications
+Close Microsoft Word,manage_applications
+Find articles about space exploration,search_information
+Restart the laptop,control_computer
+Open File Explorer,manage_applications
+Search for recipes,search_information
+Turn off the desktop,control_computer
+Close Excel,manage_applications
+Look up historical events,search_information
+Reboot the machine,control_computer
+Start PowerPoint,manage_applications
+Find information about renewable energy,search_information
+Power off the workstation,control_computer
+Open Photoshop,manage_applications
+Turn on the desktop,control_computer
+Restart the server,control_computer
+Open Firefox,manage_applications
+Close Chrome,manage_applications
+Search for programming tutorials,search_information
+Find information about the solar system,search_information
+Shut down the laptop,control_computer
+Launch Visual Studio,manage_applications
+Close Spotify,manage_applications
+Search for cooking recipes,search_information
+Turn off the monitor,control_computer
+Open Microsoft Edge,manage_applications
+Search for travel destinations,search_information
+Reboot the PC,control_computer
+Launch Sublime Text,manage_applications
+Find information about artificial intelligence,search_information
+Power off the laptop,control_computer
+Open Slack,manage_applications
+Lookup the definition of globalization,search_information
+Restart the desktop,control_computer
+Open Spotify,manage_applications
+Close Visual Studio Code,manage_applications
+Search for movie reviews,search_information
+Shut down the server,control_computer
+Launch Discord,manage_applications
+Find information about dinosaurs,search_information
+Turn on the laptop,control_computer
+Restart the workstation,control_computer
+Open Zoom,manage_applications
+Close PowerPoint,manage_applications
+Search for latest technology news,search_information
+Turn off the printer,control_computer
+Open Eclipse,manage_applications
+Search for job opportunities,search_information
+Shut down the desktop,control_computer
+Launch Minecraft,manage_applications
+Close Outlook,manage_applications
+Find information about space telescopes,search_information
+Reboot the laptop,control_computer
+Open Notepad++,manage_applications
+Look up the definition of cryptocurrency,search_information
+Power off the server,control_computer
+Launch Chrome,manage_applications
+Close Terminal,manage_applications
+Search for healthy recipes,search_information
+Turn on the desktop,control_computer
+Restart the server,control_computer
+Open Firefox,manage_applications
+Close Chrome,manage_applications
+Search for programming tutorials,search_information
+Find information about the solar system,search_information
+Shut down the laptop,control_computer
+Launch Visual Studio,manage_applications
+Close Spotify,manage_applications
+Search for cooking recipes,search_information
+Turn off the monitor,control_computer
+Open Microsoft Edge,manage_applications
+Search for travel destinations,search_information
+Reboot the PC,control_computer
+Launch Sublime Text,manage_applications
+Find information about artificial intelligence,search_information
+Power off the laptop,control_computer
+Open Slack,manage_applications
+Lookup the definition of globalization,search_information
+Restart the desktop,control_computer
+Turn off the computer,control_computer
+Restart the computer,control_computer
+Open Google Chrome,manage_applications
+Close Notepad,manage_applications
+Search for weather forecast,search_information
+Find information about global warming,search_information
+Lookup the definition of machine learning,search_information
+Shut down the PC,control_computer
+Launch Spotify,manage_applications
+Close Microsoft Word,manage_applications
+Find articles about space exploration,search_information
+Restart the laptop,control_computer
+Open File Explorer,manage_applications
+Search for recipes,search_information
+Turn off the desktop,control_computer
+Close Excel,manage_applications
+Look up historical events,search_information
+Reboot the machine,control_computer
+Start PowerPoint,manage_applications
+Find information about renewable energy,search_information
+Power off the workstation,control_computer
+Open Photoshop,manage_applications
+Search for movie reviews,search_information
+Shutdown the server,control_computer
+Close Visual Studio Code,manage_applications
+Read about famous painters,search_information
+Turn off the MacBook,control_computer
+Launch Zoom,manage_applications
+Find information about climate change,search_information
+Reboot the router,control_computer
+Open iTunes,manage_applications
+Search for health tips,search_information
+On computer,control_computer
+Off computer,control_computer
+What is your favorite book and why,search_information
+"If you could travel anywhere in the world right now, where would you go",search_information
+What is your favorite way to spend a weekend,search_information
+"If you could have dinner with any historical figure, who would it be",search_information
+What hobby would you like to take up if you had more free time,search_information
+Do you prefer the mountains or the beach? Why,search_information
+What is your favorite movie or TV show,search_information
+"If you could instantly become an expert in any field, what would it be",search_information
+What is one of the most memorable experiences you've ever had,search_information
+Do you have a favorite quote or saying? What is it,search_information
+Open Google Chorme and search Obama,manage_applications
+Open Youtube and search Python programming,manage_applications
+Open Google Chrome and find best Italian restaurants near me,manage_applications
+Open Facebook and search latest tech news,manage_applications
+Open Facebook and find weather forecast for New York,manage_applications
+Open Google Chrome and search how to bake a chocolate cake,manage_applications
+Open Youtube and find movie theaters near me,manage_applications
+Open Google Chrome and search top 10 tourist attractions in Paris,manage_applications

@@ -1,3 +1,5 @@
+import re
+
 app = ['Youtube', 'Chrome', 'Facebook', 'Instagram']
 
 
@@ -11,10 +13,17 @@ def extract_parameters(intent, user_input):
         for application in app:
             if application.lower() in user_input.lower():
                 if 'open' in user_input.lower():
-                    return ('open', application)
+                    # Check if there's a search query
+                    search_match = re.search(
+                        r"(?:search|find) ([\w\s]+)", user_input.lower())
+                    if search_match:
+                        search_query = search_match.group(1)
+                        return ('open', 'chrome', search_query)
+                    else:
+                        return ('open', application, '')
                 elif 'close' in user_input.lower():
-                    return ('close', application)
-        return ('nothing', 'None')
+                    return ('close', application, '')
+        return ('nothing', 'None', '')
     elif intent == 'search_information':
         return user_input  # The entire user input is considered as the query for now
     return user_input  # Default to whole input if specific extraction isn't implemented

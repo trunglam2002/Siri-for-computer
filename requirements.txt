@@ -2,3 +2,6 @@ spacy
 transformers
 pandas
 scikit-learn
+SpeechRecognition
+pyaudio
+pyttsx3

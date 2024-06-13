@@ -45,8 +45,3 @@ def assistant(user_input):
     parameters = extract_parameters(intent, user_input)
     print('Parameter:', parameters)
     return execute_task(intent, parameters)
-
-
-# Example usage
-# val = input("Enter your command: ")
-print(assistant('Open Google Chrome and search who am i'))

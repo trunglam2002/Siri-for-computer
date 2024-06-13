@@ -1,0 +1,4 @@
+# check tiến trình xem có đang chạy không trước khi đóng x
+# đóng tab 
+# thêm joke
+# trò chuyện

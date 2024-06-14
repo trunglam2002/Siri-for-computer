@@ -54,7 +54,6 @@ def manage_applications(action, app_name, search_query=None):
         if app_name == 'chrome':
             if search_query:
                 for app_chr in app_chrome:
-                    print(app_chr.lower())
                     if app_chr.lower() in search_query.lower():
                         is_run = close_chrome_tab(app_chr.lower())
                         if is_run:

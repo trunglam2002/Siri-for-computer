@@ -43,4 +43,4 @@ def voice_assistant():
         return None
 
 
-print(assistant('close Youtube'))
+print(assistant('close Instagram'))

@@ -43,4 +43,4 @@ def voice_assistant():
         return None
 
 
-voice_assistant()
+print(assistant('close Youtube'))

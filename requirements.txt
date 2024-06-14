@@ -5,3 +5,5 @@ scikit-learn
 SpeechRecognition
 pyaudio
 pyttsx3
+psutil
+pywinauto

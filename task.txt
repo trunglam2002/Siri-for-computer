@@ -1,4 +1,10 @@
-# check tiến trình xem có đang chạy không trước khi đóng x
-# đóng tab 
-# thêm joke
-# trò chuyện
+# check tiến trình xem có đang chạy không trước khi đóng 
+nếu có cả open và close trong user input thì return conflict
+đóng tab 
+thêm joke
+trò chuyện
+mở skype
+ghi vào notepad
+ask before close
+dừng nhạc youtube
+

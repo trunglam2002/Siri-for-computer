@@ -1,4 +1,5 @@
-app_chrome = ['Youtube', 'Facebook', 'Instagram', 'chrome']
+app_chrome = ['Youtube', 'Facebook', 'Instagram']
+chrome = ['chrome']
 app_comp = ['notepad']
 
 link_app_chrome = {

@@ -3,12 +3,11 @@
 # check tiến trình xem có đang chạy không trước khi đóng 
 # nếu có cả open và close trong user input thì return conflict
 # nói quit để thoát
-sau 1 khoảng thời gian không nói thì sẽ tự động quit
+# sau 1 khoảng thời gian không nói thì sẽ tự động quit
 # đóng tab 
+# ghi và lưu vào notepad
 thêm joke
 trò chuyện
-mở skype
-ghi vào notepad
 ask before close
 dừng nhạc youtube
 để intent sang 1 file riêng

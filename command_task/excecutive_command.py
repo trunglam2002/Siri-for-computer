@@ -6,9 +6,12 @@ import re
 from pywinauto import Desktop
 import time
 import re
+import subprocess
 
 chrome_path = "C://Program Files//Google//Chrome//Application//chrome.exe"
 webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(chrome_path))
+
+notepad_path = 'C:/Users/NgLaam/Desktop/notepad.exe'
 
 
 def reverse_lookup(dictionary, value):
@@ -32,16 +35,16 @@ def control_computer(action):
     return "Sorry, I can't perform that action for the computer."
 
 
-def manage_applications(action, app_name, search_query=None):
+def manage_applications(action, app_name, query=None):
     if action.lower() == 'open':
-        # Mở Google Chrome và tìm kiếm trên Google nếu có search_query
-        if search_query:
-            if 'https://' in search_query.lower():
+        # Mở Google Chrome và tìm kiếm trên Google nếu có query
+        if query:
+            if 'https://' in query.lower():
                 # Mở liên kết trực tiếp
-                webbrowser.get("chrome").open(search_query)
-                return f"Opening {reverse_lookup(link_app_chrome, search_query)}"
+                webbrowser.get("chrome").open(query)
+                return f"Opening {reverse_lookup(link_app_chrome, query)}"
             else:
-                url = f"https://www.google.com/search?q={search_query}"
+                url = f"https://www.google.com/search?q={query}"
                 webbrowser.get("chrome").open(url)
                 return f"Opening Google Chrome"
         else:
@@ -52,9 +55,9 @@ def manage_applications(action, app_name, search_query=None):
     # đóng tab (check xem tiến trình có chạy không trước khi đóng)
     elif action.lower() == 'close':
         if app_name == 'chrome':
-            if search_query:
+            if query:
                 for app_chr in app_chrome:
-                    if app_chr.lower() in search_query.lower():
+                    if app_chr.lower() in query.lower():
                         is_run = close_chrome_tab(app_chr.lower())
                         if is_run:
                             return f'Close {app_chr} successful'
@@ -76,6 +79,9 @@ def manage_applications(action, app_name, search_query=None):
                 return f"Closing application: {app_name}"
             else:
                 return f"Application {app_name} is not running."
+    elif action.lower() == 'write':
+        write_to_notepad(query, notepad_path)
+        return "Open notepad and write successful"
     else:
         return "Sorry, I can't perform that action for applications."
 
@@ -131,3 +137,28 @@ def close_chrome():
         os.system("taskkill /IM chrome.exe /F")
         return True
     return False
+
+
+def write_to_notepad(text, directory):
+    # Ensure the directory exists
+    os.makedirs(directory, exist_ok=True)
+
+    # Base filename and extension
+    base_filename = "output"
+    extension = ".txt"
+    counter = 1
+
+    # Determine the filename
+    while True:
+        filename = os.path.join(
+            directory, f"{base_filename}{counter}{extension}")
+        if not os.path.exists(filename):
+            break
+        counter += 1
+
+    # Open the file in write mode and write the text
+    with open(filename, "w", encoding="utf-8") as file:
+        file.write(text)
+
+    # Open the file with Notepad in a non-blocking way
+    subprocess.Popen(["notepad.exe", filename])

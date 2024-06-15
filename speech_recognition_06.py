@@ -65,4 +65,4 @@ def voice_assistant():
 
 
 if __name__ == "__main__":
-    voice_assistant()
+    print(assistant('close notepad'))

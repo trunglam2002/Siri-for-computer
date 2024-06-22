@@ -6,10 +6,11 @@
 # sau 1 khoảng thời gian không nói thì sẽ tự động quit
 # đóng tab 
 # ghi và lưu vào notepad
-thêm joke
-trò chuyện
+# tạo biến để bật tắt chức năng
 ask before close
 dừng nhạc youtube
+thêm joke
+trò chuyện
 để intent sang 1 file riêng
 
 

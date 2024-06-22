@@ -1,4 +1,5 @@
 from application.app import *
+from application.command import *
 import os
 import webbrowser
 import psutil
@@ -36,54 +37,58 @@ def control_computer(action):
 
 
 def manage_applications(action, app_name, query=None):
-    if action.lower() == 'open':
-        # Mở Google Chrome và tìm kiếm trên Google nếu có query
-        if query:
-            if 'https://' in query.lower():
-                # Mở liên kết trực tiếp
-                webbrowser.get("chrome").open(query)
-                return f"Opening {reverse_lookup(link_app_chrome, query)}"
-            else:
-                url = f"https://www.google.com/search?q={query}"
-                webbrowser.get("chrome").open(url)
-                return f"Opening Google Chrome"
-        else:
-            # Mở ứng dụng cụ thể
-            os.system(f"start {app_name}")  # Command to open application
-            return f"Opening application: {app_name}"
-
-    # đóng tab (check xem tiến trình có chạy không trước khi đóng)
-    elif action.lower() == 'close':
-        if app_name == 'chrome':
+    if manage_application['open'] == 1:
+        if action.lower() == 'open':
+            # Mở Google Chrome và tìm kiếm trên Google nếu có query
             if query:
-                for app_chr in app_chrome:
-                    if app_chr.lower() in query.lower():
-                        is_run = close_chrome_tab(app_chr.lower())
-                        if is_run:
-                            return f'Close {app_chr} successful'
-                        else:
-                            return f'{app_chr} is not running'
-            else:
-                is_run = close_chrome()
-                if is_run:
-                    return 'Close Chrome successful'
+                if 'https://' in query.lower():
+                    # Mở liên kết trực tiếp
+                    webbrowser.get("chrome").open(query)
+                    return f"Opening {reverse_lookup(link_app_chrome, query)}"
                 else:
-                    return 'Chrome is not running'
-        else:
-            # Kiểm tra xem tiến trình có đang chạy hay không
-            check_process = os.popen(
-                f'tasklist /FI "IMAGENAME eq {app_name}.exe" 2>NUL | find /I /N "{app_name}.exe"').read()
-            if f"{app_name}.exe" in check_process:
-                # Đóng ứng dụng cụ thể
-                os.system(f"taskkill /IM {app_name}.exe /F")
-                return f"Closing application: {app_name}"
+                    url = f"https://www.google.com/search?q={query}"
+                    webbrowser.get("chrome").open(url)
+                    return f"Opening Google Chrome"
             else:
-                return f"Application {app_name} is not running."
-    elif action.lower() == 'write':
-        write_to_notepad(query, notepad_path)
-        return "Open notepad and write successful"
-    else:
-        return "Sorry, I can't perform that action for applications."
+                # Mở ứng dụng cụ thể
+                os.system(f"start {app_name}")  # Command to open application
+                return f"Opening application: {app_name}"
+
+    if manage_application['close'] == 1:
+        # đóng tab (check xem tiến trình có chạy không trước khi đóng)
+        if action.lower() == 'close':
+            if app_name == 'chrome':
+                if query:
+                    for app_chr in app_chrome:
+                        if app_chr.lower() in query.lower():
+                            is_run = close_chrome_tab(app_chr.lower())
+                            if is_run:
+                                return f'Close {app_chr} successful'
+                            else:
+                                return f'{app_chr} is not running'
+                else:
+                    is_run = close_chrome()
+                    if is_run:
+                        return 'Close Chrome successful'
+                    else:
+                        return 'Chrome is not running'
+            else:
+                # Kiểm tra xem tiến trình có đang chạy hay không
+                check_process = os.popen(
+                    f'tasklist /FI "IMAGENAME eq {app_name}.exe" 2>NUL | find /I /N "{app_name}.exe"').read()
+                if f"{app_name}.exe" in check_process:
+                    # Đóng ứng dụng cụ thể
+                    os.system(f"taskkill /IM {app_name}.exe /F")
+                    return f"Closing application: {app_name}"
+                else:
+                    return f"Application {app_name} is not running."
+
+    if manage_application['write'] == 1:
+        if action.lower() == 'write':
+            write_to_notepad(query, notepad_path)
+            return "Open notepad and write successful"
+
+    return "Sorry, I can't perform that action for applications."
 
 
 def search_information(query):

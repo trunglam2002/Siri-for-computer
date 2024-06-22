@@ -65,4 +65,4 @@ def voice_assistant():
 
 
 if __name__ == "__main__":
-    print(assistant('close notepad'))
+    print(assistant('close Facebook'))

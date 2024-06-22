@@ -7,3 +7,9 @@ pyaudio
 pyttsx3
 psutil
 pywinauto
+python-vlc
+pytube
+datetime
+youtube_search 
+keyboard
+#vlc

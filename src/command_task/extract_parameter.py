@@ -69,4 +69,7 @@ def extract_parameters(intent, user_input):
             r"play\s(.*)", user_input.lower())
         if search_match:
             return search_match.group(1)
+
+    # elif intent == 'stop_music':
+
     return ('nothing', 'None', None)

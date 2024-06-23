@@ -148,3 +148,14 @@ play Shallow,play_music
 play Old Town Road,play_music
 play Thank U Next,play_music
 play Happier,play_music
+stop a music,stop_music
+stop music,stop_music
+stop the music,stop_music
+Please stop the music,stop_music
+Could you turn off the music?,stop_music
+"Pause the music, please",stop_music
+I'm going to stop the music now,stop_music
+Let's end the music for now,stop_music
+Stop playing the music,stop_music
+"Turn down the volume, or stop the music altogether",stop_music
+The music needs to be turned off,stop_music

@@ -14,7 +14,8 @@ intents = {
     'control_computer': 'control_computer',
     'manage_applications': 'manage_applications',
     'search_information': 'search_information',
-    'play_music': 'play_music'
+    'play_music': 'play_music',
+    'stop_music': 'stop_music'
 }
 
 task_mapping = {
@@ -22,6 +23,7 @@ task_mapping = {
     'manage_applications': manage_applications,
     'search_information': search_information,
     'play_music': play_music,
+    'stop_music': stop_music
 }
 
 
@@ -42,12 +44,13 @@ def execute_task(intent, parameters):
         return search_information(parameters)
     elif intent == 'play_music':
         return play_music(parameters)
+    elif intent == 'stop_music':
+        return stop_music()
     return nothing()
 
 
 def assistant(user_input):
     intent = recognize_intent(user_input)
-    print(intent)
     parameters = extract_parameters(intent, user_input)
     print('Parameter:', parameters)
     return execute_task(intent, parameters)

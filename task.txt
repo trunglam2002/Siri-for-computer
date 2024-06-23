@@ -8,7 +8,7 @@
 # ghi và lưu vào notepad
 # tạo biến để bật tắt chức năng
 # chạy audio trên nền 
-dừng audio, nếu mà gọi play 1 bài khác thì thay thế vlc
+# dừng audio, nếu mà gọi play 1 bài khác thì thay thế vlc
 thêm joke
 trò chuyện
 để intent sang 1 file riêng

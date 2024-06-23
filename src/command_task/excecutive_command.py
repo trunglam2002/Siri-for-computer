@@ -1,3 +1,4 @@
+import requests
 from application.app import *
 from application.command import *
 import os
@@ -8,11 +9,9 @@ from pywinauto import Desktop
 import time
 import re
 import subprocess
-import vlc
 from pytube import YouTube
 from youtube_search import YoutubeSearch
 from datetime import timedelta
-import threading
 
 
 webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(chrome_path))
@@ -103,7 +102,26 @@ def search_information(query):
     return f"Searching information for: {query}"
 
 
+def terminate_previous_vlc():
+    # Iterate through all running processes
+    for proc in psutil.process_iter(['pid', 'name']):
+        try:
+            # Check if the process name contains 'vlc' (case insensitive)
+            if 'vlc' in proc.name().lower():
+                # Terminate the VLC process and its children
+                parent = psutil.Process(proc.pid)
+                for child in parent.children(recursive=True):
+                    child.terminate()
+                parent.terminate()
+                print(f"Terminated VLC process with PID {proc.pid}")
+        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+            pass
+        except Exception as e:
+            print(f"Error terminating process: {e}")
+
+
 def play_music(parameters):
+
     if manage_application['play_music'] == 1:
         try:
             # Tìm kiếm video trên YouTube và sắp xếp theo số lượt xem cao nhất
@@ -134,12 +152,11 @@ def play_music(parameters):
                     progressive=True, file_extension='mp4').first()
                 video_url = stream.url
 
-                # Thay đổi đường dẫn dưới đây thành đường dẫn tới VLC của bạn
-                vlc_path = 'C:\\Program Files\\VideoLAN\\VLC\\vlc.exe'
+                # Kết thúc tiến trình VLC trước nếu có
+                terminate_previous_vlc()
 
                 # Sử dụng subprocess để chạy VLC trong nền
-                subprocess.Popen([vlc_path, video_url])
-
+                current_vlc_process = subprocess.Popen([vlc_path, video_url])
                 return "Started playing video in the background."
 
             else:
@@ -151,6 +168,10 @@ def play_music(parameters):
 
     else:
         return "Sorry, I can't perform that action."
+
+
+def stop_music():
+    return 'To stop music, press F12 or anykey depend on your setting in Tool Preference Hotkey in VLC'
 
 
 def close_chrome_tab(app_chr):

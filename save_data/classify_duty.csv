@@ -159,3 +159,18 @@ Let's end the music for now,stop_music
 Stop playing the music,stop_music
 "Turn down the volume, or stop the music altogether",stop_music
 The music needs to be turned off,stop_music
+Increase the volume to 50,change_volume
+Lower the sound to 25,change_volume
+Raise the volume to 70,change_volume
+Decrease the sound to 15,change_volume
+Adjust the volume to 40,change_volume
+Put the computer to sleep,control_computer
+Set the computer to sleep mode,control_computer
+Activate sleep mode on the computer,control_computer
+Send the computer to sleep,control_computer
+Enter sleep mode on the computer,control_computer
+Set the sound level to 35,change_volume
+Turn up the volume to 80,change_volume
+Reduce the sound to 10,change_volume
+Dial down the volume to 55,change_volume
+Bring the sound up to 30,change_volume

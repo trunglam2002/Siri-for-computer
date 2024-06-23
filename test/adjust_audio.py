@@ -1,5 +1,4 @@
 from pycaw.pycaw import AudioUtilities, ISimpleAudioVolume
-import comtypes
 
 
 def set_system_volume(volume):

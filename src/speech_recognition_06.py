@@ -65,4 +65,4 @@ def voice_assistant():
 
 
 if __name__ == "__main__":
-    print(assistant('play anh nhớ ra'))
+    print(assistant('change the volume to 10'))

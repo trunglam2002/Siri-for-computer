@@ -72,4 +72,10 @@ def extract_parameters(intent, user_input):
 
     # elif intent == 'stop_music':
 
+    elif intent == 'change_volume':
+        search_match = re.search(
+            r"(\d.*)", user_input.lower())
+        if search_match:
+            return search_match.group(1)
+
     return ('nothing', 'None', None)

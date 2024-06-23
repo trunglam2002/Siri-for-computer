@@ -49,7 +49,7 @@ def update_model(url, model_filename, vectorizer_filename):
     df = load_data(url)
     X, y, vectorizer = preprocess_data(df)
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42)
+        X, y, test_size=0.2, random_state=0)
     model = train_model(X_train, y_train)
     accuracy, cm = evaluate_model(model, X_test, y_test)
     save_model(model, model_filename)

@@ -11,5 +11,4 @@ pytube
 datetime
 youtube_search 
 pycaw
-comtypes
 #vlc

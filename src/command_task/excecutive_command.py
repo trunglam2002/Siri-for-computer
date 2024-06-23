@@ -1,4 +1,4 @@
-import requests
+from pycaw.pycaw import AudioUtilities, ISimpleAudioVolume
 from application.app import *
 from application.command import *
 import os
@@ -118,6 +118,7 @@ def terminate_previous_vlc():
             pass
         except Exception as e:
             print(f"Error terminating process: {e}")
+            return ("Error terminating process")
 
 
 def play_music(parameters):
@@ -172,6 +173,29 @@ def play_music(parameters):
 
 def stop_music():
     return 'To stop music, press F12 or anykey depend on your setting in Tool Preference Hotkey in VLC'
+
+
+def change_volume(parameters):
+    if manage_application['change_volume'] == 1:
+        parameters = int(parameters)/100
+        try:
+            # Kiểm tra nếu tham số parameters không nằm trong khoảng từ 0 đến 1
+            if not 0 <= parameters <= 100:
+                return "Input volume should be in range 0 and 100"
+
+            # Lấy danh sách tất cả các sessions âm thanh đang chạy
+            sessions = AudioUtilities.GetAllSessions()
+
+            # Duyệt qua từng session và điều chỉnh âm lượng
+            for session in sessions:
+                volume_object = session._ctl.QueryInterface(ISimpleAudioVolume)
+                volume_object.SetMasterVolume(parameters, None)
+
+            return f"System volume set to {int(parameters * 100)}%"
+
+        except TypeError as e:
+            print(f"Error while setting volume: {str(e)}")
+            return f"Error while setting volume"
 
 
 def close_chrome_tab(app_chr):

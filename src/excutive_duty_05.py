@@ -15,7 +15,8 @@ intents = {
     'manage_applications': 'manage_applications',
     'search_information': 'search_information',
     'play_music': 'play_music',
-    'stop_music': 'stop_music'
+    'stop_music': 'stop_music',
+    'change_volume': 'change_volume',
 }
 
 task_mapping = {
@@ -23,7 +24,8 @@ task_mapping = {
     'manage_applications': manage_applications,
     'search_information': search_information,
     'play_music': play_music,
-    'stop_music': stop_music
+    'stop_music': stop_music,
+    'change_volume': change_volume,
 }
 
 
@@ -46,6 +48,8 @@ def execute_task(intent, parameters):
         return play_music(parameters)
     elif intent == 'stop_music':
         return stop_music()
+    elif intent == 'change_volume':
+        return change_volume(parameters)
     return nothing()
 
 

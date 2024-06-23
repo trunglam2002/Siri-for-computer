@@ -7,10 +7,11 @@
 # đóng tab 
 # ghi và lưu vào notepad
 # tạo biến để bật tắt chức năng
-ask before close
-dừng nhạc youtube
+# chạy audio trên nền 
+dừng audio, nếu mà gọi play 1 bài khác thì thay thế vlc
 thêm joke
 trò chuyện
 để intent sang 1 file riêng
-
+chỉnh âm lượng 
+đặt computer vào trạng thái sleep
 

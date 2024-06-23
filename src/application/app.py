@@ -8,3 +8,9 @@ link_app_chrome = {
     'Instagram': "https://www.instagram.com/",
     'chrome': "https://www.google.com.vn/?hl=vi"
 }
+
+# Timeout duration in seconds (e.g., 1 minute)
+timeout_duration = 10
+
+notepad_path = 'C:/Users/NgLaam/Desktop/notepad.exe'
+chrome_path = "C://Program Files//Google//Chrome//Application//chrome.exe"

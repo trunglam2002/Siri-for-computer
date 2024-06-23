@@ -8,11 +8,14 @@ from pywinauto import Desktop
 import time
 import re
 import subprocess
+import vlc
+from pytube import YouTube
+from youtube_search import YoutubeSearch
+from datetime import timedelta
+import threading
 
-chrome_path = "C://Program Files//Google//Chrome//Application//chrome.exe"
+
 webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(chrome_path))
-
-notepad_path = 'C:/Users/NgLaam/Desktop/notepad.exe'
 
 
 def reverse_lookup(dictionary, value):
@@ -23,6 +26,10 @@ def reverse_lookup(dictionary, value):
         if val == value:
             return key
     return None
+
+
+def nothing():
+    return "Sorry, I can't perform that action."
 
 
 def control_computer(action):
@@ -94,6 +101,56 @@ def manage_applications(action, app_name, query=None):
 def search_information(query):
     # Placeholder for searching and answering information from the internet
     return f"Searching information for: {query}"
+
+
+def play_music(parameters):
+    if manage_application['play_music'] == 1:
+        try:
+            # Tìm kiếm video trên YouTube và sắp xếp theo số lượt xem cao nhất
+            results = YoutubeSearch(parameters, max_results=5).to_dict()
+
+            # Chọn video có số lượt xem cao nhất từ kết quả tìm kiếm
+            if results:
+                def get_views(view_count):
+                    # Hàm chuyển đổi số lượt xem từ dạng string sang int
+                    return int(re.sub(r'\D', '', view_count))
+
+                # Sắp xếp kết quả theo số lượt xem (lớn đến nhỏ)
+                sorted_results = sorted(
+                    results, key=lambda x: get_views(x['views']), reverse=True)
+
+                # Lấy URL của video có số lượt xem cao nhất
+                top_video = sorted_results[0]
+                video_url = f"https://www.youtube.com{top_video['url_suffix']}"
+
+                # Sử dụng pytube để lấy thông tin chi tiết về video
+                yt_video = YouTube(video_url)
+                print("Video information:")
+                print("Title:", yt_video.title)
+                print("Duration:", str(timedelta(seconds=yt_video.length)))
+
+                # Lấy URL của luồng phát video và âm thanh chất lượng cao nhất
+                stream = yt_video.streams.filter(
+                    progressive=True, file_extension='mp4').first()
+                video_url = stream.url
+
+                # Thay đổi đường dẫn dưới đây thành đường dẫn tới VLC của bạn
+                vlc_path = 'C:\\Program Files\\VideoLAN\\VLC\\vlc.exe'
+
+                # Sử dụng subprocess để chạy VLC trong nền
+                subprocess.Popen([vlc_path, video_url])
+
+                return "Started playing video in the background."
+
+            else:
+                return "No suitable results found."
+
+        except Exception as e:
+            print(f"Error: {e}")
+            return "An error occurred while processing. Please try again later."
+
+    else:
+        return "Sorry, I can't perform that action."
 
 
 def close_chrome_tab(app_chr):

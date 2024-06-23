@@ -1,4 +1,5 @@
-Work flow
+## Work flow
 
-1. extract parameter
-2. executive_command
+0. intent, task_mapping (excutive_duty.py)
+1. extract parameter.py
+2. executive_command.py

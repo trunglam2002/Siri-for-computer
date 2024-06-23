@@ -2,6 +2,7 @@ import speech_recognition as sr
 from excutive_duty_05 import assistant  # Ensure this module is accessible
 import pyttsx3
 import time
+from application.app import timeout_duration
 
 
 def voice_ai_init():
@@ -21,7 +22,6 @@ def speak(text, engine):
 def voice_assistant():
     engine = voice_ai_init()
     recognizer = sr.Recognizer()
-    timeout_duration = 60  # Timeout duration in seconds (e.g., 1 minute)
     last_activity_time = time.time()
 
     while True:
@@ -65,4 +65,4 @@ def voice_assistant():
 
 
 if __name__ == "__main__":
-    print(assistant('close Facebook'))
+    print(assistant('play chân ái'))

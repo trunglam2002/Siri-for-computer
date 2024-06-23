@@ -59,7 +59,14 @@ def extract_parameters(intent, user_input):
                     return ('close', app_c, None)
         # Nếu không khớp với bất kỳ ứng dụng nào
         return ('nothing', 'None', None)
+
     elif intent == 'search_information':
         # Toàn bộ đầu vào của người dùng được xem xét là truy vấn cho đến khi cải thiện
         return user_input
+
+    elif intent == 'play_music':
+        search_match = re.search(
+            r"play\s(.*)", user_input.lower())
+        if search_match:
+            return search_match.group(1)
     return ('nothing', 'None', None)

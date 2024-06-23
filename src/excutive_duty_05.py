@@ -1,6 +1,6 @@
-from command_task.excecutive_command import *
-from command_task.extract_parameter import *
 import pickle
+from command_task.extract_parameter import *
+from command_task.excecutive_command import *
 
 # Tải mô hình đã lưu từ tệp
 with open('save_model_SVC/classify_duty.h5', 'rb') as file:
@@ -13,13 +13,15 @@ with open('save_model_SVC/count_vectorizer.pkl', 'rb') as file:
 intents = {
     'control_computer': 'control_computer',
     'manage_applications': 'manage_applications',
-    'search_information': 'search_information'
+    'search_information': 'search_information',
+    'play_music': 'play_music'
 }
 
 task_mapping = {
     'control_computer': control_computer,
     'manage_applications': manage_applications,
-    'search_information': search_information
+    'search_information': search_information,
+    'play_music': play_music,
 }
 
 
@@ -38,10 +40,14 @@ def execute_task(intent, parameters):
         return manage_applications(action, app_name, query)
     elif intent == 'search_information':
         return search_information(parameters)
+    elif intent == 'play_music':
+        return play_music(parameters)
+    return nothing()
 
 
 def assistant(user_input):
     intent = recognize_intent(user_input)
+    print(intent)
     parameters = extract_parameters(intent, user_input)
     print('Parameter:', parameters)
     return execute_task(intent, parameters)

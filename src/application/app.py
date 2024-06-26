@@ -15,3 +15,5 @@ timeout_duration = 10
 notepad_path = 'C:/Users/NgLaam/Desktop/notepad.exe'
 chrome_path = "C://Program Files//Google//Chrome//Application//chrome.exe"
 vlc_path = 'C:\\Program Files\\VideoLAN\\VLC\\vlc.exe'
+
+ENDPOINT = " https://farming-freebsd-created-vacations.trycloudflare.com/api"

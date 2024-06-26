@@ -65,6 +65,8 @@ def extract_parameters(intent, user_input):
         return user_input
 
     elif intent == 'play_music':
+        if 'continue' in user_input.lower():
+            return 'continue music'
         search_match = re.search(
             r"play\s(.*)", user_input.lower())
         if search_match:

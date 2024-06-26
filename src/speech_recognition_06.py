@@ -37,7 +37,6 @@ def voice_assistant():
 
         try:
             text = recognizer.recognize_google(audio)
-            last_activity_time = time.time()  # Update last activity time
             if 'quit' in text:
                 print("You said:", text)
                 print("Thank you")
@@ -49,6 +48,7 @@ def voice_assistant():
                 response = assistant(text)
                 print("Assistant: " + response)
                 speak(response, engine)
+                last_activity_time = time.time()  # Update last activity time
         except sr.UnknownValueError:
             print("Sorry, I could not understand what you said.")
             speak("Sorry, I could not understand what you said.", engine)
@@ -65,4 +65,4 @@ def voice_assistant():
 
 
 if __name__ == "__main__":
-    print(assistant('change the volume to 10'))
+    voice_assistant()

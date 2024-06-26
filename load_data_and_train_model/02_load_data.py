@@ -1,10 +1,6 @@
 import pandas as pd
-import numpy as np
-from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
-import pickle
 
 # Provide the raw link to the CSV file
 url = '''https://raw.githubusercontent.com/trunglam2002/datasets/main/classify%20duty.csv'''

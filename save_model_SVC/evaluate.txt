@@ -1,8 +1,10 @@
-Accuracy: 0.9714285714285714
+Train Accuracy: 0.9823529411764705
+Test Accuracy: 0.9534883720930233
 Confusion Matrix:
-[[ 1  0  0  0  0  0]
- [ 0  8  0  0  0  0]
- [ 0  0  9  0  0  0]
- [ 0  0  0  2  0  0]
- [ 0  0  0  0 12  0]
- [ 0  1  0  0  0  2]]
+[[ 1  1  0  0  0  0]
+ [ 0  9  0  0  0  0]
+ [ 0  0 11  0  0  0]
+ [ 0  0  0  5  1  0]
+ [ 0  0  0  0 14  0]
+ [ 0  0  0  0  0  1]]
+Labels: ['change_volume', 'control_computer', 'manage_applications', 'play_music', 'search_information', 'stop_music']

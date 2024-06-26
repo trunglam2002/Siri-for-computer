@@ -8,7 +8,7 @@ with open('save_model_SVC/count_vectorizer.pkl', 'rb') as file:
     vectorizer = pickle.load(file)
 
 # Dữ liệu mới
-new_data = ['stop the music']
+new_data = ['continue a music']
 
 # Chuyển đổi văn bản thành đặc trưng số
 new_data_transformed = vectorizer.transform(new_data)

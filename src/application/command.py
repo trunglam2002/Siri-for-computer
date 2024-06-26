@@ -11,5 +11,5 @@ manage_application = {
 }
 
 search_information = {
-
+    'chatbot': 1
 }

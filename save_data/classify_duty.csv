@@ -125,11 +125,11 @@ What is your favorite book and why,search_information
 What is your favorite way to spend a weekend,search_information
 "If you could have dinner with any historical figure, who would it be",search_information
 What hobby would you like to take up if you had more free time,search_information
-Do you prefer the mountains or the beach? Why,search_information
+Do you prefer the mountains or the beach Why,search_information
 What is your favorite movie or TV show,search_information
 "If you could instantly become an expert in any field, what would it be",search_information
 What is one of the most memorable experiences you've ever had,search_information
-Do you have a favorite quote or saying? What is it,search_information
+Do you have a favorite quote or saying What is it,search_information
 Open Google Chorme and search Obama,manage_applications
 Open Youtube and search Python programming,manage_applications
 Open Google Chrome and find best Italian restaurants near me,manage_applications
@@ -152,12 +152,12 @@ stop a music,stop_music
 stop music,stop_music
 stop the music,stop_music
 Please stop the music,stop_music
-Could you turn off the music?,stop_music
+Could you turn off the music,stop_music
 "Pause the music, please",stop_music
 I'm going to stop the music now,stop_music
 Let's end the music for now,stop_music
 Stop playing the music,stop_music
-"Turn down the volume, or stop the music altogether",stop_music
+stop the music,stop_music
 The music needs to be turned off,stop_music
 Increase the volume to 50,change_volume
 Lower the sound to 25,change_volume
@@ -174,3 +174,41 @@ Turn up the volume to 80,change_volume
 Reduce the sound to 10,change_volume
 Dial down the volume to 55,change_volume
 Bring the sound up to 30,change_volume
+What's the weather like today,search_information
+Will it rain tomorrow,search_information
+How hot will it be this weekend,search_information
+What's the forecast for this week,search_information
+Is it going to snow today,search_information
+What’s my next appointment,search_information
+Do I have any meetings today,search_information
+When is my next alarm,search_information
+What’s on my calendar for tomorrow,search_information
+How many steps have I taken today,search_information
+How do I get to the nearest gas station,search_information
+Show me directions to the airport,search_information
+What's the traffic like on my way to work,search_information
+Where is the closest coffee shop,search_information
+How long will it take to drive to Los Angeles,search_information
+Play some music,search_information
+What’s the latest news,search_information
+What's the score of the [team] game,search_information
+Can you play my favorite podcast,search_information
+Who is the President of the United States,search_information
+What is the capital of France,search_information
+How old is Taylor Swift,search_information
+What is the tallest building in the world,search_information
+Tell me about the history of the Eiffel Tower,search_information
+Tell me a joke,search_information
+Do you have any pets,search_information
+What's your favorite color,search_information
+Do you believe in aliens,search_information
+Sing a song for me,search_information
+continue music,play_music
+continue music,play_music
+continue music,play_music
+continue the music,play_music
+continue the music,play_music
+continue the music,play_music
+continue a music,play_music
+continue a music,play_music
+continue a music,play_music

@@ -6,79 +6,81 @@ from datetime import timedelta
 import threading
 import keyboard
 
-# Nhập từ khóa từ người dùng
-search_keyword = input("Nhập từ khóa cần tìm trên YouTube: ")
 
-# Tìm kiếm video trên YouTube và sắp xếp theo số lượt xem cao nhất
-results = YoutubeSearch(search_keyword, max_results=10).to_dict()
+def get_views(view_count):
+    """Process the view count string and return an integer."""
+    return int(re.sub(r'\D', '', view_count))
 
-# Chọn video có số lượt xem cao nhất từ kết quả tìm kiếm
-if results:
-    try:
-        def get_views(view_count):
-            # Attempt to process the view count as a string
-            return int(re.sub(r'\D', '', view_count))
 
-        # Sắp xếp kết quả theo số lượt xem (lớn đến nhỏ)
-        sorted_results = sorted(
-            results, key=lambda x: get_views(x['views']), reverse=True)
+def handle_event(event):
+    """Handle VLC player events."""
+    if event.type == vlc.EventType.MediaPlayerEndReached:
+        print("Playback finished.")
+    elif event.type == vlc.EventType.MediaPlayerEncounteredError:
+        print("An error occurred during playback.")
 
-        # Lấy URL của video có số lượt xem cao nhất
-        top_video = sorted_results[0]
-        video_url = f"https://www.youtube.com{top_video['url_suffix']}"
 
-        # Sử dụng pytube để lấy thông tin chi tiết về video
-        yt_video = YouTube(video_url)
-        print("Thông tin video:")
-        print("Tên video:", yt_video.title)
-        print("Thời lượng:", str(timedelta(seconds=yt_video.length)))
+def wait_for_enter_to_stop(player, instance):
+    """Wait for Enter key to stop playback and release resources."""
+    keyboard.wait('enter')
+    player.stop()
+    instance.release()
 
-        # Lấy URL của luồng âm thanh tốt nhất (chỉ âm thanh)
-        audio_stream = yt_video.streams.filter(only_audio=True).first().url
 
-        # Tạo instance của VLC
-        instance = vlc.Instance()
+def main():
+    # Input search keyword
+    search_keyword = input("Nhập từ khóa cần tìm trên YouTube: ")
 
-        # Tạo media player
-        player = instance.media_player_new()
+    # Search for videos on YouTube
+    results = YoutubeSearch(search_keyword, max_results=10).to_dict()
 
-        # Tạo media từ URL của âm thanh
-        media = instance.media_new(audio_stream)
+    # Process search results
+    if results:
+        try:
+            # Sort results by view count in descending order
+            sorted_results = sorted(
+                results, key=lambda x: get_views(x['views']), reverse=True)
 
-        # Đưa media vào player
-        player.set_media(media)
+            # Get the URL of the most viewed video
+            top_video = sorted_results[0]
+            video_url = f"https://www.youtube.com{top_video['url_suffix']}"
 
-        # Bắt đầu phát âm thanh
-        player.play()
+            # Fetch video details using pytube
+            yt_video = YouTube(video_url)
+            print("Thông tin video:")
+            print("Tên video:", yt_video.title)
+            print("Thời lượng:", str(timedelta(seconds=yt_video.length)))
 
-        # Lắng nghe sự kiện phát kết thúc hoặc gặp lỗi
-        event_manager = player.event_manager()
+            # Get the URL of the best audio stream
+            audio_stream = yt_video.streams.filter(only_audio=True).first().url
 
-        # Hàm xử lý sự kiện phát kết thúc hoặc lỗi
-        def handle_event(event):
-            if event.type == vlc.EventType.MediaPlayerEndReached:
-                print("Phát kết thúc")
-            elif event.type == vlc.EventType.MediaPlayerEncounteredError:
-                print("Lỗi khi phát")
+            # Initialize VLC
+            instance = vlc.Instance()
+            player = instance.media_player_new()
+            media = instance.media_new(audio_stream)
+            player.set_media(media)
 
-        # Đăng ký hàm xử lý sự kiện với event manager
-        event_manager.event_attach(
-            vlc.EventType.MediaPlayerEndReached, handle_event)
-        event_manager.event_attach(
-            vlc.EventType.MediaPlayerEncounteredError, handle_event)
+            # Start playback
+            player.play()
 
-        # Hàm chờ sự kiện nhấn Enter để dừng phát và thoát chương trình
-        def wait_for_enter_to_stop():
-            keyboard.wait('enter')
-            player.stop()
-            instance.release()
+            # Attach event handler
+            event_manager = player.event_manager()
+            event_manager.event_attach(
+                vlc.EventType.MediaPlayerEndReached, handle_event)
+            event_manager.event_attach(
+                vlc.EventType.MediaPlayerEncounteredError, handle_event)
 
-        # Bỏ vòng lặp chờ sự kiện phát kết thúc hoặc lỗi ra ngoài
-        thread = threading.Thread(target=wait_for_enter_to_stop)
-        thread.start()
+            # Wait for Enter key to stop playback
+            thread = threading.Thread(
+                target=wait_for_enter_to_stop, args=(player, instance))
+            thread.start()
 
-    except (TypeError, ValueError) as e:
-        print(f"An error occurred: {e}")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            print("Không tìm thấy kết quả nào cho từ khóa đã nhập.")
+    else:
         print("Không tìm thấy kết quả nào cho từ khóa đã nhập.")
-else:
-    print("Không tìm thấy kết quả nào cho từ khóa đã nhập.")
+
+
+if __name__ == "__main__":
+    main()

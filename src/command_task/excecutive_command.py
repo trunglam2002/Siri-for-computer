@@ -132,7 +132,7 @@ def get_prompt(user_msg):
 
 
 def search_information(query):
-    if search_information['chatbot'] == 1:
+    if search_informations['chatbot'] == 1:
         try:
             user_message = query
 
@@ -179,44 +179,43 @@ def terminate_previous_vlc():
 
 
 def play_music(parameters):
-
-    if manage_application['play_music'] == 1:
+    if manage_application.get('play_music') == 1:
         if parameters == 'continue music':
-            return 'To continue the music, press Ctrl F11 or anykey depend on your setting in Tool Preference Hotkey in VLC'
+            return ('To continue the music, press Ctrl F11 or any key depending on '
+                    'your setting in Tool Preference Hotkey in VLC.')
+
         try:
-            # Tìm kiếm video trên YouTube và sắp xếp theo số lượt xem cao nhất
+            # Search for videos on YouTube and sort by highest views
             results = YoutubeSearch(parameters, max_results=5).to_dict()
 
-            # Chọn video có số lượt xem cao nhất từ kết quả tìm kiếm
             if results:
                 def get_views(view_count):
-                    # Hàm chuyển đổi số lượt xem từ dạng string sang int
                     return int(re.sub(r'\D', '', view_count))
 
-                # Sắp xếp kết quả theo số lượt xem (lớn đến nhỏ)
+                # Sort results by view count
                 sorted_results = sorted(
                     results, key=lambda x: get_views(x['views']), reverse=True)
 
-                # Lấy URL của video có số lượt xem cao nhất
+                # Get URL of the video with the highest views
                 top_video = sorted_results[0]
                 video_url = f"https://www.youtube.com{top_video['url_suffix']}"
 
-                # Sử dụng pytube để lấy thông tin chi tiết về video
+                # Use pytube to get video details
                 yt_video = YouTube(video_url)
                 print("Video information:")
                 print("Title:", yt_video.title)
                 print("Duration:", str(timedelta(seconds=yt_video.length)))
 
-                # Lấy URL của luồng phát video và âm thanh chất lượng cao nhất
+                # Get the URL of the highest quality stream
                 stream = yt_video.streams.filter(
                     progressive=True, file_extension='mp4').first()
-                video_url = stream.url
+                video_stream_url = stream.url
 
-                # Kết thúc tiến trình VLC trước nếu có
+                # Terminate any existing VLC process
                 terminate_previous_vlc()
 
-                # Sử dụng subprocess để chạy VLC trong nền
-                current_vlc_process = subprocess.Popen([vlc_path, video_url])
+                # Run VLC in the background
+                subprocess.Popen([vlc_path, video_stream_url])
                 return "Started playing video in the background."
 
             else:
@@ -258,7 +257,7 @@ def change_volume(parameters):
 
 
 def close_chrome_tab(app_chr):
-    pattern = r"^.*?-(.*?)-(.*?)-"
+    pattern = r"^.*?-(.*?)-(.*?)-(.*?)-"
 
     # Kết nối đến cửa sổ Chrome
     desktop = Desktop(backend="uia")
@@ -275,7 +274,7 @@ def close_chrome_tab(app_chr):
         try:
             match = re.match(pattern, str(tab.window_text))
             if match:
-                if app_chr in match.group(2).lower() or (app_chr in match.group(1).lower() and "usage" in match.group(2).lower()):
+                if "youtube" in match.group(3).lower() or "youtube" in match.group(2).lower() or ('youtube' in match.group(1).lower() and "usage" in match.group(2).lower()):
                     chrome_window.set_focus()
                     tab.click_input(double=True)  # Đảm bảo tab được chọn
                     time.sleep(1)  # Đợi để đảm bảo tab đã được chọn

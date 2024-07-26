@@ -9,7 +9,8 @@
 # tạo biến để bật tắt chức năng
 # chạy audio trên nền 
 # dừng audio, nếu mà gọi play 1 bài khác thì thay thế vlc
-trò chuyện
-để intent sang 1 file riêng
+# trò chuyện
 # chỉnh âm lượng 
+cập nhật tin tức theo thời gian thực
+# build giao diện
 

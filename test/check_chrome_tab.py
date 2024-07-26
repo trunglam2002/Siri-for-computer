@@ -2,7 +2,7 @@ from pywinauto import Desktop
 import time
 import re
 
-pattern = r"^.*?-(.*?)-(.*?)-"
+pattern = r"^.*?-(.*?)-(.*?)-(.*?)-"
 
 # Kết nối đến cửa sổ Chrome
 desktop = Desktop(backend="uia")
@@ -14,7 +14,11 @@ tabs = chrome_window.descendants(control_type="TabItem")
 
 # Xác định tab YouTube và đóng nó
 for tab in tabs:
-    print(tab.window_text)
+    # print(tab.window_text)
+    match = re.match(pattern, str(tab.window_text))
+    if match:
+        if "youtube" in match.group(3).lower() or "youtube" in match.group(2).lower() or ('youtube' in match.group(1).lower() and "usage" in match.group(2).lower()):
+            print(True)
     # try:
     #     match = re.match(pattern, str(tab.window_text))
     #     if match:

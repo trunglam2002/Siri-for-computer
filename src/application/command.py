@@ -10,6 +10,7 @@ manage_application = {
     'change_volume': 1,
 }
 
-search_information = {
-    'chatbot': 1
+search_informations = {
+    'chatbot': 0,
+    'search informations': 1,
 }

@@ -1,6 +1,7 @@
 import pickle
 from command_task.extract_parameter import *
 from command_task.excecutive_command import *
+import os
 
 # Tải mô hình đã lưu từ tệp
 with open('save_model_SVC/classify_duty.h5', 'rb') as file:

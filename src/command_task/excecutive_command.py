@@ -105,7 +105,7 @@ conversation_history = []
 
 def get_prompt(user_msg):
     return {
-        "prompt": f"You are a helpful AI assistant named Miku. You always respond in English and your personality is playful, cheerful, friendly. {user_msg}",
+        "prompt": f"You are a helpful AI assistant named Miu. You always respond in English and your personality is playful, cheerful, friendly. {user_msg}",
         "use_story": False,
         "use_memory": True,
         "use_authors_note": False,

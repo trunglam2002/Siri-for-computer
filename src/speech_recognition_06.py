@@ -1,8 +1,10 @@
 import tkinter as tk
 from tkinter import scrolledtext
+from tkinter import PhotoImage
+from PIL import Image, ImageTk
 import speech_recognition as sr
 import pyttsx3
-import time
+
 from excutive_duty_05 import assistant
 from application.app import timeout_duration
 
@@ -69,43 +71,57 @@ def start_listening():
 
 def show_text_interface():
     voice_frame.pack_forget()
-    text_frame.pack()
+    text_frame.pack(pady=10, padx=10, fill=tk.BOTH, expand=True)
+    switch_button.config(text="Switch to Voice", command=show_voice_interface)
 
 
 def show_voice_interface():
     text_frame.pack_forget()
-    voice_frame.pack()
+    voice_frame.pack(pady=10, padx=10, fill=tk.BOTH, expand=True)
+    switch_button.config(text="Switch to Text", command=show_text_interface)
 
 
 # GUI setup
 root = tk.Tk()
 root.title("Voice Assistant")
+root.geometry("360x640")  # Dimensions resembling a smartphone screen
 
-frame = tk.Frame(root)
-frame.pack(padx=10, pady=10)
+# Frame for logs and input
+frame = tk.Frame(root, bg="#f0f0f0")
+frame.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
 
-log_text = scrolledtext.ScrolledText(frame, width=50, height=20, wrap=tk.WORD)
-log_text.pack()
+# Log area
+log_text = scrolledtext.ScrolledText(
+    frame, width=40, height=20, wrap=tk.WORD, bg="#ffffff", fg="#000000", font=("Helvetica", 12))
+log_text.pack(pady=10, padx=10, fill=tk.BOTH, expand=True)
 
-text_frame = tk.Frame(root)
-input_entry = tk.Entry(text_frame, width=50)
-input_entry.pack(side=tk.LEFT, pady=5)
-send_button = tk.Button(text_frame, text="Send",
-                        command=lambda: handle_text_input(engine, log_text))
-send_button.pack(side=tk.RIGHT, padx=5)
+# Text interface setup
+text_frame = tk.Frame(root, bg="#f0f0f0")
+input_entry = tk.Entry(text_frame, width=25, font=("Helvetica", 12))
+input_entry.pack(side=tk.LEFT, pady=5, padx=10, fill=tk.X, expand=True)
 
-voice_frame = tk.Frame(root)
-listen_button = tk.Button(
-    voice_frame, text="Click to Speak", command=start_listening)
-listen_button.pack(pady=5)
+size = 35
+# Load and resize the circular icon
+original_image = Image.open("send_icon.png")
+# Adjust to the desired button size
+resized_image = original_image.resize((size, size))
+send_icon = ImageTk.PhotoImage(resized_image)
 
-switch_to_voice_button = tk.Button(
-    frame, text="Switch to Voice", command=show_voice_interface)
-switch_to_voice_button.pack(side=tk.LEFT, padx=5)
+# Tạo nút với ảnh hình tròn
+send_button = tk.Button(text_frame, image=send_icon, command=lambda: handle_text_input(
+    engine, log_text), bg="#f0f0f0", borderwidth=0, relief="flat", width=size, height=size)
+send_button.pack(side=tk.RIGHT, padx=10)
 
-switch_to_text_button = tk.Button(
-    frame, text="Switch to Text", command=show_text_interface)
-switch_to_text_button.pack(side=tk.RIGHT, padx=5)
+# Voice interface setup
+voice_frame = tk.Frame(root, bg="#f0f0f0")
+listen_button = tk.Button(voice_frame, text="Click to Speak",
+                          command=start_listening, bg="#FF5722", fg="#ffffff", font=("Helvetica", 12))
+listen_button.pack(pady=10)
+
+# Switch button
+switch_button = tk.Button(frame, text="Switch to Voice", command=show_voice_interface,
+                          bg="#FFC107", fg="#000000", font=("Helvetica", 12))
+switch_button.pack(side=tk.BOTTOM, pady=10)
 
 engine = voice_ai_init()
 recognizer = sr.Recognizer()

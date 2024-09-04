@@ -152,10 +152,11 @@ def search_information(query):
                         f"{user} {user_message}\n{bot} {response_text}\n")
                 return response_text
             else:
-                return f"An error occurred: {response.status_code} {response.text}"
+                # {response.status_code} {response.text}
+                return f"An error occurred: "
 
         except Exception as e:
-            return f"An error occurred: {e}"
+            return f"An error occurred: "  # {e}
     return "Sorry, I can't perform that action"
 
 
